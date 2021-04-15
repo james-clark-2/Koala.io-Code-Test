@@ -12,7 +12,9 @@ chmod -R ugo+rw /.composer
 
 composer install
 
-php artisan migrate --seed
+chown -R $WWWUSER:$WWWGROUP /var/www
+
+/wait && php artisan migrate --seed
 
 if [ $# -gt 0 ];then
     exec gosu $WWWUSER "$@"

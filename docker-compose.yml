@@ -3,7 +3,7 @@ version: '3'
 services:
     laravel.test:
         build:
-            context: ./docker/8.0
+            context: docker/8.0
             dockerfile: Dockerfile
             args:
                 WWWGROUP: '${WWWGROUP}'
@@ -14,13 +14,17 @@ services:
         environment:
             WWWUSER: '${WWWUSER}'
             LARAVEL_SAIL: 1
+            WAIT_HOSTS: 'mysql:3306'
+            WAIT_HOSTS_TIMEOUT: 300
+            WAIT_SLEEP_INTERVAL: 30
+            WAIT_HOST_CONNECT_TIMEOUT: 30
         volumes:
             - '.:/var/www/html'
         networks:
             - sail
         depends_on:
             - mysql
-            - redis
+#            - redis
 #            - selenium
     mysql:
         image: 'mysql:8.0'
@@ -32,30 +36,31 @@ services:
             MYSQL_USER: '${DB_USERNAME}'
             MYSQL_PASSWORD: '${DB_PASSWORD}'
             MYSQL_ALLOW_EMPTY_PASSWORD: 'yes'
-        volumes:
-            - 'sailmysql:/var/lib/mysql'
+
+#        volumes:
+#            - 'sailmysql:/var/lib/mysql'
         networks:
             - sail
         healthcheck:
           test: ["CMD", "mysqladmin", "ping"]
-    redis:
-        image: 'redis:alpine'
-        ports:
-            - '${FORWARD_REDIS_PORT:-6379}:6379'
-        volumes:
-            - 'sailredis:/data'
-        networks:
-            - sail
-        healthcheck:
-          test: ["CMD", "redis-cli", "ping"]
-    meilisearch:
-        image: 'getmeili/meilisearch:latest'
-        ports:
-            - '${FORWARD_MEILISEARCH_PORT:-7700}:7700'
-        volumes:
-            - 'sailmeilisearch:/data.ms'
-        networks:
-            - sail
+#    redis:
+#        image: 'redis:alpine'
+#        ports:
+#            - '${FORWARD_REDIS_PORT:-6379}:6379'
+#        volumes:
+#            - 'sailredis:/data'
+#        networks:
+#            - sail
+#        healthcheck:
+#          test: ["CMD", "redis-cli", "ping"]
+#    meilisearch:
+#        image: 'getmeili/meilisearch:latest'
+#        ports:
+#            - '${FORWARD_MEILISEARCH_PORT:-7700}:7700'
+#        volumes:
+#            - 'sailmeilisearch:/data.ms'
+#        networks:
+#            - sail
 #    mailhog:
 #        image: 'mailhog/mailhog:latest'
 #        ports:
