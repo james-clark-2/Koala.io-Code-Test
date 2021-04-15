@@ -22,7 +22,10 @@ class LocationFactory extends Factory
     public function definition()
     {
         return [
-            //
+            'name' => $this->faker->catchPhrase,
+            'timezone' => $this->faker->timezone,
+            'currency' => $this->faker->currencyCode,
+            'active' => true
         ];
     }
 }

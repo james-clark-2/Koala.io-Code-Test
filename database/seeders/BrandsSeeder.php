@@ -2,9 +2,10 @@
 
 namespace Database\Seeders;
 
+use App\Models\Brand;
 use Illuminate\Database\Seeder;
 
-class DatabaseSeeder extends Seeder
+class BrandsSeeder extends Seeder
 {
     /**
      * Seed the application's database.
@@ -13,8 +14,9 @@ class DatabaseSeeder extends Seeder
      */
     public function run()
     {
-        $this->call([
-           BrandsSeeder::class
+        Brand::factory()->create([
+           'brand_code' => 'koala',
+           'pretty_name' => 'Koala'
         ]);
     }
 }

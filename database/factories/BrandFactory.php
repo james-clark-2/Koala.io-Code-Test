@@ -4,6 +4,7 @@ namespace Database\Factories;
 
 use App\Models\Brand;
 use Illuminate\Database\Eloquent\Factories\Factory;
+use Illuminate\Support\Str;
 
 class BrandFactory extends Factory
 {
@@ -21,8 +22,11 @@ class BrandFactory extends Factory
      */
     public function definition()
     {
+        $name = $this->faker->catchPhrase;
+
         return [
-            //
+            'pretty_name' => $name,
+            'brand_code' => str_replace(' ', '_', lcfirst($name))
         ];
     }
 }

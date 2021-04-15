@@ -11,6 +11,14 @@ class Location extends Model
 {
     use HasFactory;
 
+    protected $fillable = [
+        'name',
+        'timezone',
+        'active',
+        'crrency',
+        'brand_id'
+    ];
+
     public function brand(): BelongsTo
     {
         /**
