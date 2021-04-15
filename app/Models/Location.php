@@ -4,20 +4,21 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Database\Eloquent\Relations\BelongsTo;
 use Illuminate\Database\Eloquent\Relations\HasOne;
 
 class Location extends Model
 {
     use HasFactory;
 
-    public function brand(): HasOne
+    public function brand(): BelongsTo
     {
         /**
          * Assuming each location is categorized by a single restaurant brand. In this case, both restaurants
          * are considered part of a "Koala" brand.
          * @TODO: Consider how a business case like Yum! Brands and hybrid Taco Bell+KFC+A&W+Pizza Hut locations would be represented
          */
-        return $this->hasOne(Brand::class);
+        return $this->BelongsTo(Brand::class);
     }
 
     public function menus(): HasOne
