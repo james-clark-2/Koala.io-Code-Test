@@ -6,17 +6,25 @@ use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\BelongsTo;
 use Illuminate\Database\Eloquent\Relations\HasOne;
+use Illuminate\Support\Collection;
 
+/**
+ * Class Location
+ * @package App\Models
+ * @property ?Brand $brand
+ * @property ?Collection $menu
+ * @property int brand_id,
+ * @property int feed_id
+ */
 class Location extends Model
 {
     use HasFactory;
 
     protected $fillable = [
         'name',
-        'timezone',
-        'active',
-        'crrency',
-        'brand_id'
+        'phone_number',
+        'brand_id',
+        'feed_id'
     ];
 
     public function brand(): BelongsTo
@@ -29,7 +37,7 @@ class Location extends Model
         return $this->BelongsTo(Brand::class);
     }
 
-    public function menus(): HasOne
+    public function menu(): HasOne
     {
         /**
          * Assuming that each location has its own menu with mutually exclusive items
