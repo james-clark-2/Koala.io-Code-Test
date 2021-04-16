@@ -16,10 +16,10 @@ class CreateLocationsTable extends Migration
     {
         Schema::create('locations', function (Blueprint $table) {
             $table->id();
+            $table->unsignedInteger('feed_id')->unique();
             $table->string('name');
-            $table->string('timezone');
-            $table->boolean('active');
-            $table->string('currency');
+            $table->text('description')->nullable();
+            $table->string('phone_number');
             $table->foreignIdFor(Brand::class);
             $table->timestamps();
         });

@@ -2,6 +2,7 @@
 
 namespace Database\Factories;
 
+use App\Models\Brand;
 use App\Models\Location;
 use Illuminate\Database\Eloquent\Factories\Factory;
 
@@ -23,9 +24,9 @@ class LocationFactory extends Factory
     {
         return [
             'name' => $this->faker->catchPhrase,
-            'timezone' => $this->faker->timezone,
-            'currency' => $this->faker->currencyCode,
-            'active' => true
+            'phone_number' => $this->faker->phoneNumber,
+            'feed_id' => Location::query()->latest()->first()->feed_id ?? $this->faker->numberBetween(1, 10),
+            'brand_id' => Brand::query()->inRandomOrder()->first()->id,
         ];
     }
 }
