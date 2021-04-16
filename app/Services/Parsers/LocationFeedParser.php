@@ -7,7 +7,7 @@ use App\Services\Contracts\FeedReaderInterface;
 use App\Services\Contracts\LocationFeedParserInterface;
 use Illuminate\Support\Collection;
 
-class FeedParser implements LocationFeedParserInterface
+class LocationFeedParser implements LocationFeedParserInterface
 {
     public function __construct(
         protected FeedReaderInterface $feedReader,
@@ -16,7 +16,6 @@ class FeedParser implements LocationFeedParserInterface
 
     public function parse(string $path): Collection
     {
-        /** @var \stdClass $data */
         $data = $this->feedReader->loadAsObject($path);
         $locations = new Collection();
 

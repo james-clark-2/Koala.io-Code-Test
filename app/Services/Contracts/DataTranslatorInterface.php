@@ -2,7 +2,9 @@
 
 namespace App\Services\Contracts;
 
-interface LocationDataTranslatorInterface
-{
+use Illuminate\Database\Eloquent\Model;
 
+interface DataTranslatorInterface
+{
+    public function translate(\stdClass $data): ?Model;
 }

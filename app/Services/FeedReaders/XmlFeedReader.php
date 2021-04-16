@@ -1,8 +1,10 @@
 <?php
 
-namespace App\Services;
+namespace App\Services\FeedReaders;
 
-class XmlFeedReader implements Contracts\FeedReaderInterface
+use App\Services\Contracts\FeedReaderInterface;
+
+class XmlFeedReader implements FeedReaderInterface
 {
     public function loadAsObject(string $path): \stdClass
     {

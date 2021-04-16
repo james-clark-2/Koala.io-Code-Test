@@ -2,7 +2,7 @@
 
 namespace App\Services\Parsers;
 
-class JsonLocationFeedParser extends LocationFeedParser
+class XmlLocationFeedParser extends LocationFeedParser
 {
 
 }

@@ -6,19 +6,31 @@ use App\Models\Brand;
 use App\Models\Location;
 use App\Services\Contracts\DataTranslatorInterface;
 
-class JsonLocationDataTranslator implements DataTranslatorInterface
+class XmlLocationDataTranslator implements DataTranslatorInterface
 {
-    public function translate(\stdClass $locationData): ?Location
+    public function translate(\stdClass $data): ?Location
     {
+        if (!$this->valid($data)) {
+            return null;
+        }
+
         $location = new Location([
-            'feed_id' => $locationData->id,
-            'name' => $locationData->name,
-            'description' => $locationData->description,
-            'phone_number' => $locationData->phone_number
+            'feed_id' => $data->id,
+            'name' => $data->name,
+            'phone_number' => $data->telephone
         ]);
 
-        $location->brand = Brand::findByName($locationData->business_name);
+        $location->brand = Brand::findByName($data->storename);
 
         return $location;
+    }
+
+    protected function valid(\stdClass $data): bool
+    {
+        return isset(
+            $data->id,
+            $data->name,
+            $data->telephone
+        );
     }
 }
