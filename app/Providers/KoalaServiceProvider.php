@@ -7,7 +7,7 @@ use App\Services\Contracts\FeedReaderInterface;
 use App\Services\FeedReaders\XmlFeedReader;
 use App\Services\FeedReaders\JsonFeedReader;
 use App\Services\Parsers\JsonLocationFeedParser;
-use App\Services\Parsers\LocationFeedParser;
+use App\Services\Parsers\FeedParser;
 use App\Services\Parsers\XmlLocationFeedParser;
 use App\Services\Translators\Location\ConfigurableLocationDataTranslator;
 use App\Services\Translators\Location\JsonLocationDataTranslator;
@@ -24,14 +24,14 @@ class KoalaServiceProvider extends ServiceProvider
     public function register()
     {
         $this->app->bind(JsonLocationFeedParser::class, fn() =>
-            new LocationFeedParser(
+            new JsonLocationFeedParser(
                 app(JsonFeedReader::class),
                 app()->make(ConfigurableLocationDataTranslator::class, ['configuration' => Config::get('feeds.locations.json')])
             )
         );
 
         $this->app->bind(XmlLocationFeedParser::class, fn() =>
-            new LocationFeedParser(
+            new XmlLocationFeedParser(
                 app(XmlFeedReader::class),
                 app()->make(ConfigurableLocationDataTranslator::class, ['configuration' => Config::get('feeds.locations.xml')])
             )

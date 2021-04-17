@@ -27,7 +27,7 @@ class ConfigurableLocationDataTranslator implements DataTranslatorInterface
         }
 
         $brandField = $this->brandIdentifier();
-        $location->brand = Brand::findByName($data->$brandField);
+        $location->brand_id = Brand::findByName($data->$brandField)?->id;
 
         return $location;
     }
