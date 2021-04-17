@@ -4,7 +4,7 @@ namespace Tests\Traits;
 
 use Illuminate\Support\Str;
 
-trait GetsXmlTestFixtures
+trait UsesXmlTestFixtures
 {
     public function getXmlFixture(string $path): \SimpleXMLElement
     {

@@ -3,27 +3,27 @@
 namespace Tests\Feature\Services\Parsers;
 
 use App\Models\Location;
-use App\Services\Parsers\JsonLocationFeedParser;
+use App\Services\Parsers\XmlLocationFeedParser;
 use App\Services\Parsers\LocationFeedParser;
 use Illuminate\Support\Collection;
 use Tests\TestCase;
 use Tests\Traits\UsesJsonTestFixtures;
 
-class JsonLocationFeedParserTest extends TestCase
+class XmlLocationFeedParserTest extends TestCase
 {
     use UsesJsonTestFixtures;
 
     public function test_it_is_instantiable()
     {
-        $this->assertInstanceOf(LocationFeedParser::class, app(JsonLocationFeedParser::class));
+        $this->assertInstanceOf(LocationFeedParser::class, app(XmlLocationFeedParser::class));
     }
 
-    public function test_it_parses_a_json_list_of_locations()
+    public function test_it_parses_a_xml_list_of_locations()
     {
         /** @var LocationFeedParser $parser */
-        $parser = app(JsonLocationFeedParser::class);
+        $parser = app(XmlLocationFeedParser::class);
 
-        $locations = $parser->parse(base_path('tests/Fixtures/koala-json-eatery-location.json'));
+        $locations = $parser->parse(base_path('tests/Fixtures/koala-xml-grill-data.xml'));
 
         $this->assertInstanceOf(Collection::class, $locations);
         $this->assertNotEmpty($locations);

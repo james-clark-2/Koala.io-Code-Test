@@ -8,7 +8,7 @@ use Illuminate\Support\Str;
  * Trait GetsJsonTestFixtures
  * @package Tests\Traits
  */
-trait GetsJsonTestFixtures
+trait UsesJsonTestFixtures
 {
     public function getJsonFixture(string $path): ?string
     {
