@@ -1,7 +1,8 @@
 <?php
 
-namespace App\Models;
+namespace App\Models\Menu;
 
+use App\Models\Menu;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\BelongsTo;
@@ -13,7 +14,7 @@ class Category extends Model
 
     protected $fillable = [
         'name',
-        'order'
+        'feed_id'
     ];
 
     public function menu(): BelongsTo

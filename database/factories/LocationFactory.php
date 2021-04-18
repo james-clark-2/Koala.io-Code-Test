@@ -25,7 +25,7 @@ class LocationFactory extends Factory
         return [
             'name' => $this->faker->catchPhrase,
             'phone_number' => $this->faker->phoneNumber,
-            'feed_id' => (Location::query()->latest()->first()->feed_id ?? $this->faker->numberBetween(0, 9)) + 1,
+            'feed_id' => $this->faker->numberBetween(),
             'brand_id' => Brand::query()->latest()->first()->id,
         ];
     }

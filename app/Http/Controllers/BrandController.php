@@ -8,34 +8,34 @@ use Illuminate\Http\Response;
 
 class BrandController extends Controller
 {
-    public function brand(string $brand_code)
+    public function brand(string $brandCode)
     {
-        return Brand::brandCode()->firstOrFail();
+        return Brand::brandCode($brandCode)->firstOrFail();
     }
 
     public function locations(Request $request, string $brandCode)
     {
         $request->validate([
            'page' => 'int|gt:0',
-           'perPage' => 'int|gt:0'
+           'per_page' => 'int|gt:0'
         ]);
 
         return Brand::brandCode($brandCode)
             ->firstOrFail()
             ->locations()
             ->paginate(
-                $request->get('page', 1),
-                $request->get('perPage', 25)
+                $request->get('per_page', 25),
+                $request->get('page', 1)
             );
     }
 
     public function location(string $brandCode, string $id)
     {
-        return Brand::brandCode($brandCode)->locations()->findOrFail($id);
+        return Brand::brandCode($brandCode)->locations()->firstOrFail(['feed_id' => $id]);
     }
 
-    public function menu(string $brandCode, string $locationId, string $menuId)
+    public function menu(string $brandCode, string $locationId)
     {
-        return response('NYI', 404);
+        return Brand::brandCode($brandCode)->locations()->firstOrFail(['feed_id' => $locationId])->menu;
     }
 }
