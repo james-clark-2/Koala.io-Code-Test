@@ -1,3 +1,34 @@
+#Koala.io Code Test
+
+##Installation
+Clone, or extract the zip file into a directory.
+
+Open a terminal window and run `./bin/sail up --build -d`
+This will build the Docker containers, set up the project including Composer dependencies, database migration, and seed restaurant data needed for the code test.
+
+The application can be accessed in a web browser/Postman/curl/http client of choice at:
+`http://127.0.0.1:80/koala`
+
+##Usage
+* `GET /`
+* `GET /brands`
+* `GET /koala`
+* `GET /koala/locations`
+* `GET /koala/locations/{id}`
+* `GET /koala/locations/{id}/menu`
+
+###Strategy
+My goal was to set up a system to easily configure data mapping for both JSON and XML sets of data. 
+
+###Further Improvements
+* Api responses could be cleaned up a bit by making use of model resources. Some data, like `feed_id`s, not meant for public consumption.
+* There is a lot of data in the menu and location feeds that were not used in this api.   
+    * Location hours and holidays
+    * Variants, options, and prices for menu items
+    * Menu availability for items
+
+
+<hr>
 <p align="center"><a href="https://laravel.com" target="_blank"><img src="https://raw.githubusercontent.com/laravel/art/master/logo-lockup/5%20SVG/2%20CMYK/1%20Full%20Color/laravel-logolockup-cmyk-red.svg" width="400"></a></p>
 
 <p align="center">
