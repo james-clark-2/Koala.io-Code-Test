@@ -32,7 +32,7 @@ class BrandControllerTest extends \Tests\TestCase
     public function test_it_returns_a_location()
     {
         $brand = Brand::factory()->hasLocations()->create();
-        $this->get('/api/'.$brand->brand_code.'/locations/'.$brand->locations->first()->feed_id)
+        $this->get('/api/'.$brand->brand_code.'/locations/'.$brand->locations->first()->id)
             ->assertOk()
             ->assertJson($brand->toArray());
     }

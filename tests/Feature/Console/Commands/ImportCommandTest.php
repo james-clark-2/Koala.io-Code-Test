@@ -6,6 +6,7 @@ use App\Models\Location;
 use App\Services\Parsers\JsonLocationFeedParser;
 use App\Services\Parsers\JsonMenuFeedParser;
 use App\Services\Parsers\XmlLocationFeedParser;
+use App\Services\Parsers\XmlMenuFeedParser;
 use Illuminate\Support\Facades\Config;
 use Mockery;
 use Tests\TestCase;
@@ -14,6 +15,7 @@ class ImportCommandTest extends TestCase
 {
     public function test_it_uses_the_json_parser_for_json_files()
     {
+        Config::set('feeds.restaurants', []);
         Config::set('feeds.restaurants.Test Restaurant', [
             'locations' =>  base_path('tests/Fixtures/koala-json-eatery-location.json'),
             'menus' => base_path('tests/Fixtures/koala-json-eatery-menu.json')
@@ -40,14 +42,12 @@ class ImportCommandTest extends TestCase
 
     public function test_it_uses_the_xml_parser_for_xml_files()
     {
-        $this->markTestSkipped('XML Menu parser not yet implemented');
+        Config::set('feeds.restaurants', []);
         Config::set('feeds.restaurants.Test Restaurant', [
-            'locations' => base_path('tests/Fixtures/koala-xml-grill-data.xml'),
-            'menus' => base_path('tests/Fixtures/koala-xml-grill-data.xml')
+            'locations' => base_path('tests/Fixtures/koala-xml-grill-data.xml')
         ]);
 
         $locationParserSpy = Mockery::spy(app(XmlLocationFeedParser::class))->makePartial();
-        $menuParserSpy = Mockery::spy(app(XmlMenuFeedParser::class))->makePartial();
 
         $this->app->bind(
             XmlLocationFeedParser::class,
@@ -56,7 +56,9 @@ class ImportCommandTest extends TestCase
 
         $this->artisan('koala:import');
 
-        $locationParserSpy->shouldHaveReceived('parse')->once()->with($path);
+        $locationParserSpy->shouldHaveReceived('parse')
+            ->once()
+            ->with(Config::get('feeds.restaurants.Test Restaurant.locations'));
     }
 
     public function test_it_updates_locations_with_the_same_feed_id()

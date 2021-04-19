@@ -2,6 +2,7 @@
 
 namespace App\Services\Parsers;
 
+use Illuminate\Support\Arr;
 use Illuminate\Support\Collection;
 
 class XmlLocationFeedParser extends FeedParser
@@ -17,6 +18,15 @@ class XmlLocationFeedParser extends FeedParser
         $location = $this->dataTranslator->translate($dataObj);
 
         if ($location) {
+            $location = $location->firstOrNew(
+                ['feed_id' => $location->feed_id],
+                $location->getAttributes()
+            );
+
+            $menus = app(XmlMenuFeedParser::class)->parse($path);
+            $menus->each(fn ($menu) => $location->menu()->associate($menu));
+            $location->save();
+
             $locations->add($location);
         }
 

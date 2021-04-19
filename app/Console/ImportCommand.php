@@ -5,6 +5,7 @@ namespace App\Console;
 use App\Models\Location;
 use App\Models\Menu;
 use App\Services\Parsers\JsonMenuFeedParser;
+use App\Services\Parsers\XmlMenuFeedParser;
 use Database\Seeders\BrandsSeeder;
 use Illuminate\Console\Command;
 use App\Services\Contracts\LocationFeedParserInterface;
@@ -43,7 +44,7 @@ class ImportCommand extends Command
                 $parser = $this->parserBasedOnExtensionAndPhase($filePath, $phase);
 
                 if (!$parser) {
-                    $this->warn($phase . ' parser does not exist');
+                    $this->warn($phase . ' parser does not exist. Skipping this import.');
                     continue;
                 }
 
@@ -51,6 +52,7 @@ class ImportCommand extends Command
 
                 switch($phase) {
                     case 'locations':
+                        //Keep location so we can attach it to menus
                         $location = Location::where('feed_id', $objects->first()->feed_id)->first();
                         break;
                     case 'menus': $this->saveMenuToLocation($objects->first(), $location); break;
@@ -68,6 +70,7 @@ class ImportCommand extends Command
             ['locations', 'json'] => app(JsonLocationFeedParser::class),
             ['locations', 'xml'] => app(XmlLocationFeedParser::class),
             ['menus', 'json'] => app(JsonMenuFeedParser::class),
+            //['menus', 'xml'] => app(XmlMenuFeedParser::class),
             default => null
         };
     }

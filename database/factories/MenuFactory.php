@@ -2,17 +2,17 @@
 
 namespace Database\Factories;
 
-use App\Models\Brand;
+use App\Models\Menu;
 use Illuminate\Database\Eloquent\Factories\Factory;
 
-class BrandFactory extends Factory
+class MenuFactory extends Factory
 {
     /**
      * The name of the factory's corresponding model.
      *
      * @var string
      */
-    protected $model = Brand::class;
+    protected $model = Menu::class;
 
     /**
      * Define the model's default state.
@@ -21,11 +21,8 @@ class BrandFactory extends Factory
      */
     public function definition()
     {
-        $name = $this->faker->catchPhrase;
-
         return [
-            'pretty_name' => $name,
-            'brand_code' => str_replace(' ', '_', lcfirst($name))
+
         ];
     }
 }

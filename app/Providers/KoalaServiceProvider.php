@@ -10,6 +10,7 @@ use App\Services\Parsers\JsonLocationFeedParser;
 use App\Services\Parsers\FeedParser;
 use App\Services\Parsers\JsonMenuFeedParser;
 use App\Services\Parsers\XmlLocationFeedParser;
+use App\Services\Parsers\XmlMenuFeedParser;
 use App\Services\Translators\Item\ConfigurableItemDataTranslator;
 use App\Services\Translators\Location\ConfigurableLocationDataTranslator;
 use App\Services\Translators\Location\JsonLocationDataTranslator;
@@ -42,7 +43,14 @@ class KoalaServiceProvider extends ServiceProvider
         $this->app->bind(JsonMenuFeedParser::class, fn() =>
             new JsonMenuFeedParser(
                 app(JsonFeedReader::class),
-                app()->make(ConfigurableLocationDataTranslator::class, ['configuration' => Config::get('feeds.menus.json')])
+                app()->make(ConfigurableLocationDataTranslator::class, ['configuration' => []])
+            )
+        );
+
+        $this->app->bind(XmlMenuFeedParser::class, fn() =>
+            new XmlMenuFeedParser(
+                app(XmlFeedReader::class),
+                app()->make(ConfigurableLocationDataTranslator::class, ['configuration' => []])
             )
         );
     }

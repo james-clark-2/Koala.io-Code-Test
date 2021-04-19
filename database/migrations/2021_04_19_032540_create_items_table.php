@@ -1,5 +1,6 @@
 <?php
 
+use App\Models\Menu\Category;
 use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
@@ -17,8 +18,9 @@ class CreateItemsTable extends Migration
             $table->id();
             $table->string('feed_id');
             $table->string('name');
+            $table->text('description')->nullable();
             $table->string('category_feed_id')->nullable();
-            $table->foreignIdFor(\App\Models\Menu\Category::class);
+            $table->foreignIdFor(Category::class);
             $table->boolean('active')->default(false);
             $table->timestamps();
         });

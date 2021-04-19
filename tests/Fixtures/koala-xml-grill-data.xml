@@ -49,6 +49,7 @@
     <categories>
       <category id="21323" name="Specials" extref="4bd7cc94-c2e4-4268-91d3-4f615ca19b5f" sortorder="0">
         <products>
+            <product id="9999999" chainproductid="99999" name="61 Cent Boneless Wings" description="Get an order of our delicious boneless wings, sauced and tossed in your favorite flavor, for just 60 cents per wing.&#xD;&#xA;&#xD;&#xA;Only at participating locations." cost="0.0000" extref="3ADB2CE0-0C99-4974-BFFE-DDF3E24662E6" isdisabled="false" minimumquantity="1" minimumbasketquantity="" quantityincrement="1" shortdescription="" sortorder="0" />
           <product id="13316920" chainproductid="124496" name="60 Cent Boneless Wings" description="Get an order of our delicious boneless wings, sauced and tossed in your favorite flavor, for just 60 cents per wing.&#xD;&#xA;&#xD;&#xA;Only at participating locations." cost="0.0000" extref="3ADB2CE0-0C99-4974-BFFE-DDF3E24662E6" isdisabled="false" minimumquantity="1" minimumbasketquantity="" quantityincrement="1" shortdescription="" sortorder="0">
             <modifiers>
               <optiongroup id="482626409" chainid="58635" description="Choose Boneless Wing Quantity:" mandatory="true" supportschoicequantities="false" choicequantityincrement="1" sortorder="0">

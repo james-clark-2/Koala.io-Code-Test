@@ -15,7 +15,8 @@ class Category extends Model
 
     protected $fillable = [
         'name',
-        'feed_id'
+        'feed_id',
+        'menu_id'
     ];
 
     public function menu(): BelongsTo
