@@ -1,31 +1,54 @@
 #Koala.io Code Test
 
 ##Installation
-Clone, or extract the zip file into a directory.
+1. Clone, or extract the zip file into a directory.
 
-Open a terminal window and copy `.env.docker` to `.env` and run `./bin/sail up --build -d`
-This will build the Docker containers, set up the project including Composer dependencies, database migration, and seed restaurant data needed for the code test.
+2. Open a terminal window and copy `.env.docker` to `.env`
+3. Run `./bin/sail up --build -d`. This will build the Docker containers, set up the project including Composer dependencies, database migration, and seed restaurant data needed for the code test.
+4. The application can be accessed in a web browser/Postman/curl/http client of choice at:
+   `http://localhost:80`
 
-The application can be accessed in a web browser/Postman/curl/http client of choice at:
-`http://localhost:80/koala`
+**NOTE:** The application port can be changed in case port 80 is taken by another process by modifying the `APP_PORT` value in the `.env` file.
 
 ##Usage
-* `GET /`
-* `GET /brands`
-* `GET /koala`
-* `GET /koala/locations`
-* `GET /koala/locations/{id}`
-* `GET /koala/locations/{id}/menu`
+Please refer to the Postman collection `Koala.io Code Test.postman_collection.json`, or the OpenAPI yaml file `Koala.io Code Test.postman_collection.json-OpenApi3Yaml.yaml` included in this repo for documentation.
+Available endpoints
+* `GET /brands` - List of brands registered in the api
+* `GET /koala` - The Koala brand
+* `GET /koala/locations` - All locations associated with the Koala brand
+* `GET /koala/locations/{id}` - A single location associated with the Koala brand
+* `GET /koala/locations/{id}/menu` - The menu associated with the location
 
 ###Strategy
-My goal was to set up a system to easily configure data mapping for both JSON and XML sets of data. 
+My goal was to set up a system to easily configure data mapping for both JSON and XML sets of data.
+Feed parsing makes heavy use of Dependency Injection to read data from JSON and XML formats, and translate that data into a common set of models that represent brands, locations, and their menus.
+
+The hierarchy between those models are set up as a simple tree structure.
+
+    - Brand
+        - Location
+            - Menu
+                - Category
+                    - Item
+                    - Item
+                - Category
+                    - Item
+                    - Item
+                    - Item
+
+Some assumptions have been made for the purpose of the code test.
+* There is only one brand - "Koala"
+* Locations can only have one menu
+* Menus do not have a default "root" category. If the item does not have a category, then it is not added to a menu.
+* Location hours and holidays are not implemented
 
 ###Further Improvements
 * Api responses could be cleaned up a bit by making use of model resources. Some data, like `feed_id`s, not meant for public consumption.
 * There is a lot of data in the menu and location feeds that were not used in this api.   
     * Location hours and holidays
-    * Variants, options, and prices for menu items
-    * Menu availability for items
+    * Variants, options, add-ons, and prices for menu items
+    * Menu availability for items - e.g. Breakfast and Lunch, Limited time only
+    * Time dependent items
 
 
 <hr>

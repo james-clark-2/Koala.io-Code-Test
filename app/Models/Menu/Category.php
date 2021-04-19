@@ -7,8 +7,15 @@ use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\BelongsTo;
 use Illuminate\Database\Eloquent\Relations\HasMany;
-use Illuminate\Database\Eloquent\Relations\HasOne;
 
+/**
+ * Class Category
+ * @package App\Models\Menu
+ *
+ * The Category model represents a menu category - ex: Beverages, Entrees, and contains menu items
+ * @TODO: Seed a "root" category for menu items without a category
+ * @TODO: Set up a pivot table so an item can belong to multiple categories - ex: A milkshake could be listed under "Beverages" and "Desserts"
+ */
 class Category extends Model
 {
     use HasFactory;
