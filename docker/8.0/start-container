@@ -14,9 +14,7 @@ composer install
 
 chown -R $WWWUSER:$WWWGROUP /var/www
 
-/wait && php artisan migrate
-
-php artisan koala:import
+/wait && php artisan migrate && php artisan koala:import
 
 if [ $# -gt 0 ];then
     exec gosu $WWWUSER "$@"
