@@ -43,7 +43,6 @@ class JsonMenuFeedParserTest extends TestCase
                 } else {
                     $this->assertNotEmpty($category->items);
                 }
-
             }
         );
     }

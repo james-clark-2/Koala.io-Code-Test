@@ -24,18 +24,23 @@ class BrandController extends Controller
             ->firstOrFail()
             ->locations()
             ->paginate(
-                $request->get('per_page', 25),
-                $request->get('page', 1)
+                perPage: $request->get('per_page', 25),
+                page: $request->get('page', 1)
             );
     }
 
     public function location(string $brandCode, string $id)
     {
-        return Brand::brandCode($brandCode)->locations()->firstOrFail(['feed_id' => $id]);
+        return Brand::brandCode($brandCode)->firstOrFail()->locations()->findOrFail($id);
     }
 
     public function menu(string $brandCode, string $locationId)
     {
-        return Brand::brandCode($brandCode)->locations()->firstOrFail(['feed_id' => $locationId])->menu;
+        return Brand::brandCode($brandCode)->firstOrFail()
+            ->locations()
+            ->findOrFail($locationId)
+            ->menu()
+            ->with('categories.items')
+            ->get();
     }
 }

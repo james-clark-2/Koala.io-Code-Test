@@ -19,7 +19,9 @@ class Item extends Model
     protected $fillable = [
         'name',
         'description',
-        'visible'
+        'visible',
+        'feed_id',
+        'category_feed_id'
     ];
 
     public function category(): BelongsTo

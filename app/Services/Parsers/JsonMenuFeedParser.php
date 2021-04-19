@@ -74,6 +74,11 @@ class JsonMenuFeedParser extends FeedParser
                 $menuItem = $this->translateMenuItem($dataObj);
 
                 if ($menuItem) {
+                    $menuItem = $menuItem->firstOrNew(
+                        ['feed_id' => $menuItem->feed_id],
+                        $menuItem->getAttributes()
+                    );
+
                     $menu->categories()
                         ->firstWhere('feed_id', $menuItem->category_feed_id)
                         ?->items()->save($menuItem);
