@@ -1,0 +1,662 @@
+{
+	"info": {
+		"_postman_id": "4dfd5ffd-9cc2-4376-b3b1-92cdc6099161",
+		"name": "Koala.io Code Test",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "Health Check",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://{{url}}/",
+					"protocol": "http",
+					"host": [
+						"{{url}}"
+					],
+					"path": [
+						""
+					]
+				}
+			},
+			"response": [
+				{
+					"name": "Health Check",
+					"originalRequest": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://{{url}}/",
+							"protocol": "http",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								""
+							]
+						}
+					},
+					"status": "OK",
+					"code": 200,
+					"_postman_previewlanguage": "json",
+					"header": [
+						{
+							"key": "Host",
+							"value": "localhost"
+						},
+						{
+							"key": "Date",
+							"value": "Mon, 19 Apr 2021 14:04:50 GMT"
+						},
+						{
+							"key": "Date",
+							"value": "Mon, 19 Apr 2021 14:04:50 GMT"
+						},
+						{
+							"key": "Connection",
+							"value": "close"
+						},
+						{
+							"key": "X-Powered-By",
+							"value": "PHP/8.0.3"
+						},
+						{
+							"key": "Cache-Control",
+							"value": "no-cache, private"
+						},
+						{
+							"key": "Content-Type",
+							"value": "application/json"
+						},
+						{
+							"key": "X-RateLimit-Limit",
+							"value": "60"
+						},
+						{
+							"key": "X-RateLimit-Remaining",
+							"value": "59"
+						}
+					],
+					"cookie": [],
+					"body": "{\n    \"status\": \"OK\"\n}"
+				}
+			]
+		},
+		{
+			"name": "Brands",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://{{url}}/brands",
+					"protocol": "http",
+					"host": [
+						"{{url}}"
+					],
+					"path": [
+						"brands"
+					]
+				}
+			},
+			"response": [
+				{
+					"name": "Brands",
+					"originalRequest": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://{{url}}/brands",
+							"protocol": "http",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"brands"
+							]
+						}
+					},
+					"status": "OK",
+					"code": 200,
+					"_postman_previewlanguage": "json",
+					"header": [
+						{
+							"key": "Host",
+							"value": "localhost"
+						},
+						{
+							"key": "Date",
+							"value": "Mon, 19 Apr 2021 14:05:52 GMT"
+						},
+						{
+							"key": "Date",
+							"value": "Mon, 19 Apr 2021 14:05:52 GMT"
+						},
+						{
+							"key": "Connection",
+							"value": "close"
+						},
+						{
+							"key": "X-Powered-By",
+							"value": "PHP/8.0.3"
+						},
+						{
+							"key": "Cache-Control",
+							"value": "no-cache, private"
+						},
+						{
+							"key": "Content-Type",
+							"value": "application/json"
+						},
+						{
+							"key": "X-RateLimit-Limit",
+							"value": "60"
+						},
+						{
+							"key": "X-RateLimit-Remaining",
+							"value": "59"
+						}
+					],
+					"cookie": [],
+					"body": "{\n    \"current_page\": 1,\n    \"data\": [\n        {\n            \"id\": 1,\n            \"brand_code\": \"koala\",\n            \"pretty_name\": \"Koala\",\n            \"created_at\": \"2021-04-19T13:54:18.000000Z\",\n            \"updated_at\": \"2021-04-19T13:54:18.000000Z\"\n        }\n    ],\n    \"first_page_url\": \"http://localhost/brands?page=1\",\n    \"from\": 1,\n    \"last_page\": 1,\n    \"last_page_url\": \"http://localhost/brands?page=1\",\n    \"links\": [\n        {\n            \"url\": null,\n            \"label\": \"&laquo; Previous\",\n            \"active\": false\n        },\n        {\n            \"url\": \"http://localhost/brands?page=1\",\n            \"label\": \"1\",\n            \"active\": true\n        },\n        {\n            \"url\": null,\n            \"label\": \"Next &raquo;\",\n            \"active\": false\n        }\n    ],\n    \"next_page_url\": null,\n    \"path\": \"http://localhost/brands\",\n    \"per_page\": 25,\n    \"prev_page_url\": null,\n    \"to\": 1,\n    \"total\": 1\n}"
+				}
+			]
+		},
+		{
+			"name": "Get Brand By Brand Code",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://{{url}}/:brandCode",
+					"protocol": "http",
+					"host": [
+						"{{url}}"
+					],
+					"path": [
+						":brandCode"
+					],
+					"variable": [
+						{
+							"key": "brandCode",
+							"value": "koala"
+						}
+					]
+				}
+			},
+			"response": [
+				{
+					"name": "Brand OK",
+					"originalRequest": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://{{url}}/:brandCode",
+							"protocol": "http",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								":brandCode"
+							],
+							"variable": [
+								{
+									"key": "brandCode",
+									"value": "koala"
+								}
+							]
+						}
+					},
+					"status": "OK",
+					"code": 200,
+					"_postman_previewlanguage": "json",
+					"header": [
+						{
+							"key": "Host",
+							"value": "localhost"
+						},
+						{
+							"key": "Date",
+							"value": "Mon, 19 Apr 2021 14:06:44 GMT"
+						},
+						{
+							"key": "Date",
+							"value": "Mon, 19 Apr 2021 14:06:44 GMT"
+						},
+						{
+							"key": "Connection",
+							"value": "close"
+						},
+						{
+							"key": "X-Powered-By",
+							"value": "PHP/8.0.3"
+						},
+						{
+							"key": "Cache-Control",
+							"value": "no-cache, private"
+						},
+						{
+							"key": "Content-Type",
+							"value": "application/json"
+						},
+						{
+							"key": "X-RateLimit-Limit",
+							"value": "60"
+						},
+						{
+							"key": "X-RateLimit-Remaining",
+							"value": "58"
+						}
+					],
+					"cookie": [],
+					"body": "{\n    \"id\": 1,\n    \"brand_code\": \"koala\",\n    \"pretty_name\": \"Koala\",\n    \"created_at\": \"2021-04-19T13:54:18.000000Z\",\n    \"updated_at\": \"2021-04-19T13:54:18.000000Z\"\n}"
+				},
+				{
+					"name": "Brand Not Found",
+					"originalRequest": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://{{url}}/:brandCode",
+							"protocol": "http",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								":brandCode"
+							],
+							"variable": [
+								{
+									"key": "brandCode",
+									"value": "non_existent_brand"
+								}
+							]
+						}
+					},
+					"status": "Not Found",
+					"code": 404,
+					"_postman_previewlanguage": "json",
+					"header": [
+						{
+							"key": "Host",
+							"value": "localhost"
+						},
+						{
+							"key": "Date",
+							"value": "Mon, 19 Apr 2021 14:09:00 GMT"
+						},
+						{
+							"key": "Date",
+							"value": "Mon, 19 Apr 2021 14:09:00 GMT"
+						},
+						{
+							"key": "Connection",
+							"value": "close"
+						},
+						{
+							"key": "X-Powered-By",
+							"value": "PHP/8.0.3"
+						},
+						{
+							"key": "Cache-Control",
+							"value": "no-cache, private"
+						},
+						{
+							"key": "Content-Type",
+							"value": "application/json"
+						},
+						{
+							"key": "X-RateLimit-Limit",
+							"value": "60"
+						},
+						{
+							"key": "X-RateLimit-Remaining",
+							"value": "58"
+						}
+					],
+					"cookie": [],
+					"body": "{\n    \"errors\": \"Brand not found.\"\n}"
+				}
+			]
+		},
+		{
+			"name": "Get All Locations Under A Brand",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://{{url}}/:brandCode/locations",
+					"protocol": "http",
+					"host": [
+						"{{url}}"
+					],
+					"path": [
+						":brandCode",
+						"locations"
+					],
+					"variable": [
+						{
+							"key": "brandCode",
+							"value": "koala"
+						}
+					]
+				}
+			},
+			"response": [
+				{
+					"name": "Locations OK",
+					"originalRequest": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://{{url}}/:brandCode/locations",
+							"protocol": "http",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								":brandCode",
+								"locations"
+							],
+							"variable": [
+								{
+									"key": "brandCode",
+									"value": "koala"
+								}
+							]
+						}
+					},
+					"status": "OK",
+					"code": 200,
+					"_postman_previewlanguage": "json",
+					"header": [
+						{
+							"key": "Host",
+							"value": "localhost"
+						},
+						{
+							"key": "Date",
+							"value": "Mon, 19 Apr 2021 14:07:38 GMT"
+						},
+						{
+							"key": "Date",
+							"value": "Mon, 19 Apr 2021 14:07:38 GMT"
+						},
+						{
+							"key": "Connection",
+							"value": "close"
+						},
+						{
+							"key": "X-Powered-By",
+							"value": "PHP/8.0.3"
+						},
+						{
+							"key": "Cache-Control",
+							"value": "no-cache, private"
+						},
+						{
+							"key": "Content-Type",
+							"value": "application/json"
+						},
+						{
+							"key": "X-RateLimit-Limit",
+							"value": "60"
+						},
+						{
+							"key": "X-RateLimit-Remaining",
+							"value": "59"
+						}
+					],
+					"cookie": [],
+					"body": "{\n    \"current_page\": 1,\n    \"data\": [\n        {\n            \"id\": 1,\n            \"feed_id\": 1,\n            \"name\": \"Koala XML Grill\",\n            \"description\": null,\n            \"phone_number\": \"5555555555\",\n            \"brand_id\": 1,\n            \"menu_id\": 1,\n            \"created_at\": \"2021-04-19T13:54:21.000000Z\",\n            \"updated_at\": \"2021-04-19T13:54:21.000000Z\"\n        },\n        {\n            \"id\": 2,\n            \"feed_id\": 2,\n            \"name\": \"Koala JSON Eatery\",\n            \"description\": null,\n            \"phone_number\": \"+1 555-555-5555\",\n            \"brand_id\": 1,\n            \"menu_id\": 2,\n            \"created_at\": \"2021-04-19T13:54:22.000000Z\",\n            \"updated_at\": \"2021-04-19T13:54:25.000000Z\"\n        }\n    ],\n    \"first_page_url\": \"http://localhost/koala/locations?page=1\",\n    \"from\": 1,\n    \"last_page\": 1,\n    \"last_page_url\": \"http://localhost/koala/locations?page=1\",\n    \"links\": [\n        {\n            \"url\": null,\n            \"label\": \"&laquo; Previous\",\n            \"active\": false\n        },\n        {\n            \"url\": \"http://localhost/koala/locations?page=1\",\n            \"label\": \"1\",\n            \"active\": true\n        },\n        {\n            \"url\": null,\n            \"label\": \"Next &raquo;\",\n            \"active\": false\n        }\n    ],\n    \"next_page_url\": null,\n    \"path\": \"http://localhost/koala/locations\",\n    \"per_page\": 25,\n    \"prev_page_url\": null,\n    \"to\": 2,\n    \"total\": 2\n}"
+				},
+				{
+					"name": "Brand Not Found",
+					"originalRequest": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://{{url}}/:brandCode/locations",
+							"protocol": "http",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								":brandCode",
+								"locations"
+							],
+							"variable": [
+								{
+									"key": "brandCode",
+									"value": "non_existent_brand"
+								}
+							]
+						}
+					},
+					"status": "Not Found",
+					"code": 404,
+					"_postman_previewlanguage": "json",
+					"header": [
+						{
+							"key": "Host",
+							"value": "localhost"
+						},
+						{
+							"key": "Date",
+							"value": "Mon, 19 Apr 2021 14:09:00 GMT"
+						},
+						{
+							"key": "Date",
+							"value": "Mon, 19 Apr 2021 14:09:00 GMT"
+						},
+						{
+							"key": "Connection",
+							"value": "close"
+						},
+						{
+							"key": "X-Powered-By",
+							"value": "PHP/8.0.3"
+						},
+						{
+							"key": "Cache-Control",
+							"value": "no-cache, private"
+						},
+						{
+							"key": "Content-Type",
+							"value": "application/json"
+						},
+						{
+							"key": "X-RateLimit-Limit",
+							"value": "60"
+						},
+						{
+							"key": "X-RateLimit-Remaining",
+							"value": "58"
+						}
+					],
+					"cookie": [],
+					"body": "{\n    \"errors\": \"Brand not found.\"\n}"
+				}
+			]
+		},
+		{
+			"name": "Get All Menus By Location",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://{{url}}/:brandCode/locations/:locationId/menu",
+					"protocol": "http",
+					"host": [
+						"{{url}}"
+					],
+					"path": [
+						":brandCode",
+						"locations",
+						":locationId",
+						"menu"
+					],
+					"variable": [
+						{
+							"key": "brandCode",
+							"value": "koala"
+						},
+						{
+							"key": "locationId",
+							"value": "1"
+						}
+					]
+				}
+			},
+			"response": [
+				{
+					"name": "Menu OK",
+					"originalRequest": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://{{url}}/:brandCode/locations/:locationId/menu",
+							"protocol": "http",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								":brandCode",
+								"locations",
+								":locationId",
+								"menu"
+							],
+							"variable": [
+								{
+									"key": "brandCode",
+									"value": "koala"
+								},
+								{
+									"key": "locationId",
+									"value": "1"
+								}
+							]
+						}
+					},
+					"status": "OK",
+					"code": 200,
+					"_postman_previewlanguage": "json",
+					"header": [
+						{
+							"key": "Host",
+							"value": "localhost"
+						},
+						{
+							"key": "Date",
+							"value": "Mon, 19 Apr 2021 14:10:50 GMT"
+						},
+						{
+							"key": "Date",
+							"value": "Mon, 19 Apr 2021 14:10:50 GMT"
+						},
+						{
+							"key": "Connection",
+							"value": "close"
+						},
+						{
+							"key": "X-Powered-By",
+							"value": "PHP/8.0.3"
+						},
+						{
+							"key": "Cache-Control",
+							"value": "no-cache, private"
+						},
+						{
+							"key": "Content-Type",
+							"value": "application/json"
+						},
+						{
+							"key": "X-RateLimit-Limit",
+							"value": "60"
+						},
+						{
+							"key": "X-RateLimit-Remaining",
+							"value": "59"
+						}
+					],
+					"cookie": [],
+					"body": "[\n    {\n        \"id\": 1,\n        \"created_at\": \"2021-04-19T13:54:19.000000Z\",\n        \"updated_at\": \"2021-04-19T13:54:19.000000Z\",\n        \"categories\": [\n            {\n                \"id\": 1,\n                \"name\": \"Specials\",\n                \"feed_id\": \"21323\",\n                \"menu_id\": 1,\n                \"created_at\": \"2021-04-19T13:54:20.000000Z\",\n                \"updated_at\": \"2021-04-19T13:54:20.000000Z\",\n                \"items\": [\n                    {\n                        \"id\": 1,\n                        \"feed_id\": \"13316920\",\n                        \"name\": \"60 Cent Boneless Wings\",\n                        \"description\": \"Get an order of our delicious boneless wings, sauced and tossed in your favorite flavor, for just 60 cents per wing.\\r\\n\\r\\nOnly at participating locations.\",\n                        \"category_feed_id\": null,\n                        \"category_id\": 1,\n                        \"active\": 0,\n                        \"created_at\": \"2021-04-19T13:54:20.000000Z\",\n                        \"updated_at\": \"2021-04-19T13:54:20.000000Z\"\n                    }\n                ]\n            },\n            {\n                \"id\": 2,\n                \"name\": \"Drinks\",\n                \"feed_id\": \"11231\",\n                \"menu_id\": 1,\n                \"created_at\": \"2021-04-19T13:54:20.000000Z\",\n                \"updated_at\": \"2021-04-19T13:54:20.000000Z\",\n                \"items\": [\n                    {\n                        \"id\": 2,\n                        \"feed_id\": \"22103038\",\n                        \"name\": \"Simply Lemonade®\",\n                        \"description\": \"You'll never have to make your own lemonade again. 52 oz. Simply Lemonade is a refreshing alternative to homemade lemonades for the crew.\",\n                        \"category_feed_id\": null,\n                        \"category_id\": 2,\n                        \"active\": 0,\n                        \"created_at\": \"2021-04-19T13:54:20.000000Z\",\n                        \"updated_at\": \"2021-04-19T13:54:20.000000Z\"\n                    }\n                ]\n            },\n            {\n                \"id\": 3,\n                \"name\": \"Desserts\",\n                \"feed_id\": \"11651\",\n                \"menu_id\": 1,\n                \"created_at\": \"2021-04-19T13:54:21.000000Z\",\n                \"updated_at\": \"2021-04-19T13:54:21.000000Z\",\n                \"items\": [\n                    {\n                        \"id\": 3,\n                        \"feed_id\": \"11701601\",\n                        \"name\": \"Triple Chocolate Chunk Brownie\",\n                        \"description\": \"The perfect blend of chocolate chips and chocolate chunks are mixed in this delicious brownie.\",\n                        \"category_feed_id\": null,\n                        \"category_id\": 3,\n                        \"active\": 0,\n                        \"created_at\": \"2021-04-19T13:54:21.000000Z\",\n                        \"updated_at\": \"2021-04-19T13:54:21.000000Z\"\n                    }\n                ]\n            }\n        ]\n    }\n]"
+				},
+				{
+					"name": "Location Not Found",
+					"originalRequest": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://{{url}}/:brandCode/locations/:locationId/menu",
+							"protocol": "http",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								":brandCode",
+								"locations",
+								":locationId",
+								"menu"
+							],
+							"variable": [
+								{
+									"key": "brandCode",
+									"value": "koala"
+								},
+								{
+									"key": "locationId",
+									"value": "non_existent_location"
+								}
+							]
+						}
+					},
+					"status": "Not Found",
+					"code": 404,
+					"_postman_previewlanguage": "json",
+					"header": [
+						{
+							"key": "Host",
+							"value": "localhost"
+						},
+						{
+							"key": "Date",
+							"value": "Mon, 19 Apr 2021 14:12:29 GMT"
+						},
+						{
+							"key": "Date",
+							"value": "Mon, 19 Apr 2021 14:12:29 GMT"
+						},
+						{
+							"key": "Connection",
+							"value": "close"
+						},
+						{
+							"key": "X-Powered-By",
+							"value": "PHP/8.0.3"
+						},
+						{
+							"key": "Cache-Control",
+							"value": "no-cache, private"
+						},
+						{
+							"key": "Content-Type",
+							"value": "application/json"
+						},
+						{
+							"key": "X-RateLimit-Limit",
+							"value": "60"
+						},
+						{
+							"key": "X-RateLimit-Remaining",
+							"value": "59"
+						}
+					],
+					"cookie": [],
+					"body": "{\n    \"errors\": \"Location not found.\"\n}"
+				}
+			]
+		}
+	]
+}

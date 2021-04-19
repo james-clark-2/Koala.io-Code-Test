@@ -1,0 +1,1061 @@
+openapi: 3.0.0
+info:
+  title: Koala.io Code Test
+  contact: {}
+  version: '1.0'
+servers:
+- url: http://localhost
+  variables: {}
+paths:
+  /:
+    get:
+      tags:
+      - Misc
+      summary: Health Check
+      operationId: HealthCheck
+      parameters: []
+      responses:
+        '200':
+          description: OK
+          headers:
+            Host:
+              content:
+                text/plain:
+                  schema:
+                    type: string
+                  example: localhost
+            Date:
+              content:
+                text/plain:
+                  schema:
+                    type: string
+                  example: Mon, 19 Apr 2021 14:04:50 GMT
+            Connection:
+              content:
+                text/plain:
+                  schema:
+                    type: string
+                  example: close
+            X-Powered-By:
+              content:
+                text/plain:
+                  schema:
+                    type: string
+                  example: PHP/8.0.3
+            Cache-Control:
+              content:
+                text/plain:
+                  schema:
+                    type: string
+                  example: no-cache, private
+            X-RateLimit-Limit:
+              content:
+                text/plain:
+                  schema:
+                    type: string
+                  example: '60'
+            X-RateLimit-Remaining:
+              content:
+                text/plain:
+                  schema:
+                    type: string
+                  example: '59'
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/HealthCheck'
+      deprecated: false
+  /brands:
+    get:
+      tags:
+      - Misc
+      summary: Brands
+      operationId: Brands
+      parameters: []
+      responses:
+        '200':
+          description: OK
+          headers:
+            Host:
+              content:
+                text/plain:
+                  schema:
+                    type: string
+                  example: localhost
+            Date:
+              content:
+                text/plain:
+                  schema:
+                    type: string
+                  example: Mon, 19 Apr 2021 14:05:52 GMT
+            Connection:
+              content:
+                text/plain:
+                  schema:
+                    type: string
+                  example: close
+            X-Powered-By:
+              content:
+                text/plain:
+                  schema:
+                    type: string
+                  example: PHP/8.0.3
+            Cache-Control:
+              content:
+                text/plain:
+                  schema:
+                    type: string
+                  example: no-cache, private
+            X-RateLimit-Limit:
+              content:
+                text/plain:
+                  schema:
+                    type: string
+                  example: '60'
+            X-RateLimit-Remaining:
+              content:
+                text/plain:
+                  schema:
+                    type: string
+                  example: '59'
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Brands'
+      deprecated: false
+  /{brandCode}:
+    get:
+      tags:
+      - Misc
+      summary: Get Brand By Brand Code
+      operationId: GetBrandByBrandCode
+      parameters:
+      - name: brandCode
+        in: path
+        description: ''
+        required: true
+        style: simple
+        schema:
+          type: string
+          example: koala
+      responses:
+        '200':
+          description: OK
+          headers:
+            Host:
+              content:
+                text/plain:
+                  schema:
+                    type: string
+                  example: localhost
+            Date:
+              content:
+                text/plain:
+                  schema:
+                    type: string
+                  example: Mon, 19 Apr 2021 14:06:44 GMT
+            Connection:
+              content:
+                text/plain:
+                  schema:
+                    type: string
+                  example: close
+            X-Powered-By:
+              content:
+                text/plain:
+                  schema:
+                    type: string
+                  example: PHP/8.0.3
+            Cache-Control:
+              content:
+                text/plain:
+                  schema:
+                    type: string
+                  example: no-cache, private
+            X-RateLimit-Limit:
+              content:
+                text/plain:
+                  schema:
+                    type: string
+                  example: '60'
+            X-RateLimit-Remaining:
+              content:
+                text/plain:
+                  schema:
+                    type: string
+                  example: '58'
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/BrandOK'
+        '404':
+          description: Not Found
+          headers:
+            Host:
+              content:
+                text/plain:
+                  schema:
+                    type: string
+                  example: localhost
+            Date:
+              content:
+                text/plain:
+                  schema:
+                    type: string
+                  example: Mon, 19 Apr 2021 14:09:00 GMT
+            Connection:
+              content:
+                text/plain:
+                  schema:
+                    type: string
+                  example: close
+            X-Powered-By:
+              content:
+                text/plain:
+                  schema:
+                    type: string
+                  example: PHP/8.0.3
+            Cache-Control:
+              content:
+                text/plain:
+                  schema:
+                    type: string
+                  example: no-cache, private
+            X-RateLimit-Limit:
+              content:
+                text/plain:
+                  schema:
+                    type: string
+                  example: '60'
+            X-RateLimit-Remaining:
+              content:
+                text/plain:
+                  schema:
+                    type: string
+                  example: '58'
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/BrandNotFound1'
+      deprecated: false
+  /{brandCode}/locations:
+    get:
+      tags:
+      - Misc
+      summary: Get All Locations Under A Brand
+      operationId: GetAllLocationsUnderABrand
+      parameters:
+      - name: brandCode
+        in: path
+        description: ''
+        required: true
+        style: simple
+        schema:
+          type: string
+          example: koala
+      responses:
+        '200':
+          description: OK
+          headers:
+            Host:
+              content:
+                text/plain:
+                  schema:
+                    type: string
+                  example: localhost
+            Date:
+              content:
+                text/plain:
+                  schema:
+                    type: string
+                  example: Mon, 19 Apr 2021 14:07:38 GMT
+            Connection:
+              content:
+                text/plain:
+                  schema:
+                    type: string
+                  example: close
+            X-Powered-By:
+              content:
+                text/plain:
+                  schema:
+                    type: string
+                  example: PHP/8.0.3
+            Cache-Control:
+              content:
+                text/plain:
+                  schema:
+                    type: string
+                  example: no-cache, private
+            X-RateLimit-Limit:
+              content:
+                text/plain:
+                  schema:
+                    type: string
+                  example: '60'
+            X-RateLimit-Remaining:
+              content:
+                text/plain:
+                  schema:
+                    type: string
+                  example: '59'
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/LocationsOK'
+        '404':
+          description: Not Found
+          headers:
+            Host:
+              content:
+                text/plain:
+                  schema:
+                    type: string
+                  example: localhost
+            Date:
+              content:
+                text/plain:
+                  schema:
+                    type: string
+                  example: Mon, 19 Apr 2021 14:09:00 GMT
+            Connection:
+              content:
+                text/plain:
+                  schema:
+                    type: string
+                  example: close
+            X-Powered-By:
+              content:
+                text/plain:
+                  schema:
+                    type: string
+                  example: PHP/8.0.3
+            Cache-Control:
+              content:
+                text/plain:
+                  schema:
+                    type: string
+                  example: no-cache, private
+            X-RateLimit-Limit:
+              content:
+                text/plain:
+                  schema:
+                    type: string
+                  example: '60'
+            X-RateLimit-Remaining:
+              content:
+                text/plain:
+                  schema:
+                    type: string
+                  example: '58'
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/BrandNotFound1'
+      deprecated: false
+  /{brandCode}/locations/{locationId}/menu:
+    get:
+      tags:
+      - Misc
+      summary: Get All Menus By Location
+      operationId: GetAllMenusByLocation
+      parameters:
+      - name: brandCode
+        in: path
+        description: ''
+        required: true
+        style: simple
+        schema:
+          type: string
+      - name: locationId
+        in: path
+        description: ''
+        required: true
+        style: simple
+        schema:
+          type: string
+          example: non_existent_location
+      responses:
+        '200':
+          description: OK
+          headers:
+            Host:
+              content:
+                text/plain:
+                  schema:
+                    type: string
+                  example: localhost
+            Date:
+              content:
+                text/plain:
+                  schema:
+                    type: string
+                  example: Mon, 19 Apr 2021 14:10:50 GMT
+            Connection:
+              content:
+                text/plain:
+                  schema:
+                    type: string
+                  example: close
+            X-Powered-By:
+              content:
+                text/plain:
+                  schema:
+                    type: string
+                  example: PHP/8.0.3
+            Cache-Control:
+              content:
+                text/plain:
+                  schema:
+                    type: string
+                  example: no-cache, private
+            X-RateLimit-Limit:
+              content:
+                text/plain:
+                  schema:
+                    type: string
+                  example: '60'
+            X-RateLimit-Remaining:
+              content:
+                text/plain:
+                  schema:
+                    type: string
+                  example: '59'
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/MenuOK'
+                description: ''
+                example:
+                - id: 1
+                  created_at: 2021-04-19T13:54:19Z
+                  updated_at: 2021-04-19T13:54:19Z
+                  categories:
+                  - id: 1
+                    name: Specials
+                    feed_id: '21323'
+                    menu_id: 1
+                    created_at: 2021-04-19T13:54:20Z
+                    updated_at: 2021-04-19T13:54:20Z
+                    items:
+                    - id: 1
+                      feed_id: '13316920'
+                      name: 60 Cent Boneless Wings
+                      description: >-
+                        Get an order of our delicious boneless wings, sauced and tossed in your favorite flavor, for just 60 cents per wing.
+
+
+
+                        Only at participating locations.
+                      category_feed_id: ''
+                      category_id: 1
+                      active: 0
+                      created_at: 2021-04-19T13:54:20Z
+                      updated_at: 2021-04-19T13:54:20Z
+                  - id: 2
+                    name: Drinks
+                    feed_id: '11231'
+                    menu_id: 1
+                    created_at: 2021-04-19T13:54:20Z
+                    updated_at: 2021-04-19T13:54:20Z
+                    items:
+                    - id: 2
+                      feed_id: '22103038'
+                      name: Simply Lemonade®
+                      description: You'll never have to make your own lemonade again. 52 oz. Simply Lemonade is a refreshing alternative to homemade lemonades for the crew.
+                      category_feed_id: ''
+                      category_id: 2
+                      active: 0
+                      created_at: 2021-04-19T13:54:20Z
+                      updated_at: 2021-04-19T13:54:20Z
+                  - id: 3
+                    name: Desserts
+                    feed_id: '11651'
+                    menu_id: 1
+                    created_at: 2021-04-19T13:54:21Z
+                    updated_at: 2021-04-19T13:54:21Z
+                    items:
+                    - id: 3
+                      feed_id: '11701601'
+                      name: Triple Chocolate Chunk Brownie
+                      description: The perfect blend of chocolate chips and chocolate chunks are mixed in this delicious brownie.
+                      category_feed_id: ''
+                      category_id: 3
+                      active: 0
+                      created_at: 2021-04-19T13:54:21Z
+                      updated_at: 2021-04-19T13:54:21Z
+        '404':
+          description: Not Found
+          headers:
+            Host:
+              content:
+                text/plain:
+                  schema:
+                    type: string
+                  example: localhost
+            Date:
+              content:
+                text/plain:
+                  schema:
+                    type: string
+                  example: Mon, 19 Apr 2021 14:12:29 GMT
+            Connection:
+              content:
+                text/plain:
+                  schema:
+                    type: string
+                  example: close
+            X-Powered-By:
+              content:
+                text/plain:
+                  schema:
+                    type: string
+                  example: PHP/8.0.3
+            Cache-Control:
+              content:
+                text/plain:
+                  schema:
+                    type: string
+                  example: no-cache, private
+            X-RateLimit-Limit:
+              content:
+                text/plain:
+                  schema:
+                    type: string
+                  example: '60'
+            X-RateLimit-Remaining:
+              content:
+                text/plain:
+                  schema:
+                    type: string
+                  example: '59'
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/LocationNotFound1'
+      deprecated: false
+components:
+  schemas:
+    HealthCheck:
+      title: HealthCheck
+      required:
+      - status
+      type: object
+      properties:
+        status:
+          type: string
+      example:
+        status: OK
+    Brands:
+      title: Brands
+      required:
+      - current_page
+      - data
+      - first_page_url
+      - from
+      - last_page
+      - last_page_url
+      - links
+      - next_page_url
+      - path
+      - per_page
+      - prev_page_url
+      - to
+      - total
+      type: object
+      properties:
+        current_page:
+          type: integer
+          format: int32
+        data:
+          type: array
+          items:
+            $ref: '#/components/schemas/Datum'
+          description: ''
+        first_page_url:
+          type: string
+        from:
+          type: integer
+          format: int32
+        last_page:
+          type: integer
+          format: int32
+        last_page_url:
+          type: string
+        links:
+          type: array
+          items:
+            $ref: '#/components/schemas/Link'
+          description: ''
+        next_page_url:
+          type: string
+          nullable: true
+        path:
+          type: string
+        per_page:
+          type: integer
+          format: int32
+        prev_page_url:
+          type: string
+          nullable: true
+        to:
+          type: integer
+          format: int32
+        total:
+          type: integer
+          format: int32
+      example:
+        current_page: 1
+        data:
+        - id: 1
+          brand_code: koala
+          pretty_name: Koala
+          created_at: 2021-04-19T13:54:18Z
+          updated_at: 2021-04-19T13:54:18Z
+        first_page_url: http://localhost/brands?page=1
+        from: 1
+        last_page: 1
+        last_page_url: http://localhost/brands?page=1
+        links:
+        - url: ''
+          label: '&laquo; Previous'
+          active: false
+        - url: http://localhost/brands?page=1
+          label: '1'
+          active: true
+        - url: ''
+          label: Next &raquo;
+          active: false
+        next_page_url: ''
+        path: http://localhost/brands
+        per_page: 25
+        prev_page_url: ''
+        to: 1
+        total: 1
+    Datum:
+      title: Datum
+      required:
+      - id
+      - brand_code
+      - pretty_name
+      - created_at
+      - updated_at
+      type: object
+      properties:
+        id:
+          type: integer
+          format: int32
+        brand_code:
+          type: string
+        pretty_name:
+          type: string
+        created_at:
+          type: string
+        updated_at:
+          type: string
+      example:
+        id: 1
+        brand_code: koala
+        pretty_name: Koala
+        created_at: 2021-04-19T13:54:18Z
+        updated_at: 2021-04-19T13:54:18Z
+    Link:
+      title: Link
+      required:
+      - url
+      - label
+      - active
+      type: object
+      properties:
+        url:
+          type: string
+          nullable: true
+        label:
+          type: string
+        active:
+          type: boolean
+      example:
+        url: ''
+        label: '&laquo; Previous'
+        active: false
+    BrandOK:
+      title: BrandOK
+      required:
+      - id
+      - brand_code
+      - pretty_name
+      - created_at
+      - updated_at
+      type: object
+      properties:
+        id:
+          type: integer
+          format: int32
+        brand_code:
+          type: string
+        pretty_name:
+          type: string
+        created_at:
+          type: string
+        updated_at:
+          type: string
+      example:
+        id: 1
+        brand_code: koala
+        pretty_name: Koala
+        created_at: 2021-04-19T13:54:18Z
+        updated_at: 2021-04-19T13:54:18Z
+    BrandNotFound1:
+      title: BrandNotFound1
+      required:
+      - errors
+      type: object
+      properties:
+        errors:
+          type: string
+      example:
+        errors: Brand not found.
+    LocationsOK:
+      title: LocationsOK
+      required:
+      - current_page
+      - data
+      - first_page_url
+      - from
+      - last_page
+      - last_page_url
+      - links
+      - next_page_url
+      - path
+      - per_page
+      - prev_page_url
+      - to
+      - total
+      type: object
+      properties:
+        current_page:
+          type: integer
+          format: int32
+        data:
+          type: array
+          items:
+            $ref: '#/components/schemas/Datum1'
+          description: ''
+        first_page_url:
+          type: string
+        from:
+          type: integer
+          format: int32
+        last_page:
+          type: integer
+          format: int32
+        last_page_url:
+          type: string
+        links:
+          type: array
+          items:
+            $ref: '#/components/schemas/Link'
+          description: ''
+        next_page_url:
+          type: string
+          nullable: true
+        path:
+          type: string
+        per_page:
+          type: integer
+          format: int32
+        prev_page_url:
+          type: string
+          nullable: true
+        to:
+          type: integer
+          format: int32
+        total:
+          type: integer
+          format: int32
+      example:
+        current_page: 1
+        data:
+        - id: 1
+          feed_id: 1
+          name: Koala XML Grill
+          description: ''
+          phone_number: '5555555555'
+          brand_id: 1
+          menu_id: 1
+          created_at: 2021-04-19T13:54:21Z
+          updated_at: 2021-04-19T13:54:21Z
+        - id: 2
+          feed_id: 2
+          name: Koala JSON Eatery
+          description: ''
+          phone_number: +1 555-555-5555
+          brand_id: 1
+          menu_id: 2
+          created_at: 2021-04-19T13:54:22Z
+          updated_at: 2021-04-19T13:54:25Z
+        first_page_url: http://localhost/koala/locations?page=1
+        from: 1
+        last_page: 1
+        last_page_url: http://localhost/koala/locations?page=1
+        links:
+        - url: ''
+          label: '&laquo; Previous'
+          active: false
+        - url: http://localhost/koala/locations?page=1
+          label: '1'
+          active: true
+        - url: ''
+          label: Next &raquo;
+          active: false
+        next_page_url: ''
+        path: http://localhost/koala/locations
+        per_page: 25
+        prev_page_url: ''
+        to: 2
+        total: 2
+    Datum1:
+      title: Datum1
+      required:
+      - id
+      - feed_id
+      - name
+      - description
+      - phone_number
+      - brand_id
+      - menu_id
+      - created_at
+      - updated_at
+      type: object
+      properties:
+        id:
+          type: integer
+          format: int32
+        feed_id:
+          type: integer
+          format: int32
+        name:
+          type: string
+        description:
+          type: string
+          nullable: true
+        phone_number:
+          type: string
+        brand_id:
+          type: integer
+          format: int32
+        menu_id:
+          type: integer
+          format: int32
+        created_at:
+          type: string
+        updated_at:
+          type: string
+      example:
+        id: 1
+        feed_id: 1
+        name: Koala XML Grill
+        description: ''
+        phone_number: '5555555555'
+        brand_id: 1
+        menu_id: 1
+        created_at: 2021-04-19T13:54:21Z
+        updated_at: 2021-04-19T13:54:21Z
+    MenuOK:
+      title: MenuOK
+      required:
+      - id
+      - created_at
+      - updated_at
+      - categories
+      type: object
+      properties:
+        id:
+          type: integer
+          format: int32
+        created_at:
+          type: string
+        updated_at:
+          type: string
+        categories:
+          type: array
+          items:
+            $ref: '#/components/schemas/Category'
+          description: ''
+      example:
+        id: 1
+        created_at: 2021-04-19T13:54:19Z
+        updated_at: 2021-04-19T13:54:19Z
+        categories:
+        - id: 1
+          name: Specials
+          feed_id: '21323'
+          menu_id: 1
+          created_at: 2021-04-19T13:54:20Z
+          updated_at: 2021-04-19T13:54:20Z
+          items:
+          - id: 1
+            feed_id: '13316920'
+            name: 60 Cent Boneless Wings
+            description: >-
+              Get an order of our delicious boneless wings, sauced and tossed in your favorite flavor, for just 60 cents per wing.
+
+
+
+              Only at participating locations.
+            category_feed_id: ''
+            category_id: 1
+            active: 0
+            created_at: 2021-04-19T13:54:20Z
+            updated_at: 2021-04-19T13:54:20Z
+        - id: 2
+          name: Drinks
+          feed_id: '11231'
+          menu_id: 1
+          created_at: 2021-04-19T13:54:20Z
+          updated_at: 2021-04-19T13:54:20Z
+          items:
+          - id: 2
+            feed_id: '22103038'
+            name: Simply Lemonade®
+            description: You'll never have to make your own lemonade again. 52 oz. Simply Lemonade is a refreshing alternative to homemade lemonades for the crew.
+            category_feed_id: ''
+            category_id: 2
+            active: 0
+            created_at: 2021-04-19T13:54:20Z
+            updated_at: 2021-04-19T13:54:20Z
+        - id: 3
+          name: Desserts
+          feed_id: '11651'
+          menu_id: 1
+          created_at: 2021-04-19T13:54:21Z
+          updated_at: 2021-04-19T13:54:21Z
+          items:
+          - id: 3
+            feed_id: '11701601'
+            name: Triple Chocolate Chunk Brownie
+            description: The perfect blend of chocolate chips and chocolate chunks are mixed in this delicious brownie.
+            category_feed_id: ''
+            category_id: 3
+            active: 0
+            created_at: 2021-04-19T13:54:21Z
+            updated_at: 2021-04-19T13:54:21Z
+    Category:
+      title: Category
+      required:
+      - id
+      - name
+      - feed_id
+      - menu_id
+      - created_at
+      - updated_at
+      - items
+      type: object
+      properties:
+        id:
+          type: integer
+          format: int32
+        name:
+          type: string
+        feed_id:
+          type: string
+        menu_id:
+          type: integer
+          format: int32
+        created_at:
+          type: string
+        updated_at:
+          type: string
+        items:
+          type: array
+          items:
+            $ref: '#/components/schemas/Item'
+          description: ''
+      example:
+        id: 1
+        name: Specials
+        feed_id: '21323'
+        menu_id: 1
+        created_at: 2021-04-19T13:54:20Z
+        updated_at: 2021-04-19T13:54:20Z
+        items:
+        - id: 1
+          feed_id: '13316920'
+          name: 60 Cent Boneless Wings
+          description: >-
+            Get an order of our delicious boneless wings, sauced and tossed in your favorite flavor, for just 60 cents per wing.
+
+
+
+            Only at participating locations.
+          category_feed_id: ''
+          category_id: 1
+          active: 0
+          created_at: 2021-04-19T13:54:20Z
+          updated_at: 2021-04-19T13:54:20Z
+    Item:
+      title: Item
+      required:
+      - id
+      - feed_id
+      - name
+      - description
+      - category_feed_id
+      - category_id
+      - active
+      - created_at
+      - updated_at
+      type: object
+      properties:
+        id:
+          type: integer
+          format: int32
+        feed_id:
+          type: string
+        name:
+          type: string
+        description:
+          type: string
+        category_feed_id:
+          type: string
+          nullable: true
+        category_id:
+          type: integer
+          format: int32
+        active:
+          type: integer
+          format: int32
+        created_at:
+          type: string
+        updated_at:
+          type: string
+      example:
+        id: 1
+        feed_id: '13316920'
+        name: 60 Cent Boneless Wings
+        description: >-
+          Get an order of our delicious boneless wings, sauced and tossed in your favorite flavor, for just 60 cents per wing.
+
+
+
+          Only at participating locations.
+        category_feed_id: ''
+        category_id: 1
+        active: 0
+        created_at: 2021-04-19T13:54:20Z
+        updated_at: 2021-04-19T13:54:20Z
+    LocationNotFound1:
+      title: LocationNotFound1
+      required:
+      - errors
+      type: object
+      properties:
+        errors:
+          type: string
+      example:
+        errors: Location not found.
+tags:
+- name: Misc
+  description: ''
