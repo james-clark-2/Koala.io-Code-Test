@@ -6,10 +6,10 @@
         <MODEL ATTRIBUTE> => [
             'field' => <JSON/XML ATTRIBUTE TO MAP TO THE MODEL ATTRIBUTE ABOVE>,
             'rules' => <OPTIONAL LIST OF LARAVEL VALIDATION RULES>
+            'transform' => <OPTIONAL - A CLOSURE THAT TRANSFORMS THE VALUE GIVEN BY THE FEED>
         ],
         ...
-    ],
-    'brand_identifier' => <JSON/XML DATA ATTRIBUTE THAT REPRESENTS THE BRAND THIS LOCATION IS A PART OF>
+    ]
  ]
  */
 

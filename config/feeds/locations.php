@@ -8,10 +8,10 @@
             'rules' => <OPTIONAL LIST OF LARAVEL VALIDATION RULES>
         ],
         ...
-    ],
-    'brand_identifier' => <JSON/XML DATA ATTRIBUTE THAT REPRESENTS THE BRAND THIS LOCATION IS A PART OF>
+    ]
  ]
  */
+//@TODO: Put business_identifier into the map with the rest of the fields, and use the transform closure to look up the brand by name
 
 return [
     'json' => [

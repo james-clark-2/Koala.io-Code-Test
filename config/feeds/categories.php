@@ -8,8 +8,7 @@
             'rules' => <OPTIONAL LIST OF LARAVEL VALIDATION RULES>
         ],
         ...
-    ],
-    'brand_identifier' => <JSON/XML DATA ATTRIBUTE THAT REPRESENTS THE BRAND THIS LOCATION IS A PART OF>
+    ]
  ]
  */
 

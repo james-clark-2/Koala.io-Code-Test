@@ -2,7 +2,6 @@
 
 ##Installation
 1. Clone, or extract the zip file into a directory.
-
 2. Open a terminal window and copy `.env.docker` to `.env`
 3. Run `./bin/sail up --build -d`. This will build the Docker containers, set up the project including Composer dependencies, database migration, and seed restaurant data needed for the code test.
 4. The application can be accessed in a web browser/Postman/curl/http client of choice at:
@@ -20,10 +19,15 @@ Available endpoints
 * `GET /koala/locations/{id}/menu` - The menu associated with the location
 
 ###Strategy
+####JSON and XML Restaurant Parsing
 My goal was to set up a system to easily configure data mapping for both JSON and XML sets of data.
 Feed parsing makes heavy use of Dependency Injection to read data from JSON and XML formats, and translate that data into a common set of models that represent brands, locations, and their menus.
 
-The hierarchy between those models are set up as a simple tree structure.
+Configuration for which files are associated with which restaurant, and data mappings can be found under `/configuration/feeds`.
+<br/>
+<br/>
+####Restaurant Models
+The hierarchy between restaurant models are set up as a simple tree structure.
 
     - Brand
         - Location

@@ -2,8 +2,7 @@
 
 return [
     'Xml Grill' => [
-        'locations' => 'https://koala-coding-challenge.s3.amazonaws.com/backend/koala-xml-grill-data.xml',
-        //'menus' => 'https://koala-coding-challenge.s3.amazonaws.com/backend/koala-xml-grill-data.xml'
+        'locations' => 'https://koala-coding-challenge.s3.amazonaws.com/backend/koala-xml-grill-data.xml' //Locations and feeds are in one file
     ],
     'Json Eatery' => [
         'locations' => 'https://koala-coding-challenge.s3.amazonaws.com/backend/koala-json-eatery-location.json',
