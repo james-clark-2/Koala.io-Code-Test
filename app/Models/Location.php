@@ -37,13 +37,13 @@ class Location extends Model
         return $this->BelongsTo(Brand::class);
     }
 
-    public function menu(): HasOne
+    public function menu(): BelongsTo
     {
         /**
          * Assuming that each location has its own menu with mutually exclusive items
          * @TODO: Consider whether a location can have multiple menus - ex: Breakfast/Lunch/Dinner
          * @TODO: Consider whether multiple locations can share a menu (with different prices) to avoid duplicating data
          */
-        return $this->hasOne(Menu::class);
+        return $this->belongsTo(Menu::class);
     }
 }

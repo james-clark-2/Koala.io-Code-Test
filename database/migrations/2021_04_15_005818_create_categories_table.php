@@ -17,6 +17,7 @@ class CreateCategoriesTable extends Migration
             $table->id();
             $table->string('name')->unique();
             $table->string('feed_id')->unique();
+            $table->foreignIdFor(\App\Models\Menu::class);
             $table->timestamps();
         });
     }

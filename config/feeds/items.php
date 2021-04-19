@@ -24,6 +24,10 @@ return [
                 'field' => 'item_data.name',
                 'rules' => 'required|string',
             ],
+            'category_feed_id' => [
+                'field' => 'item_data.category_id',
+                'rules' => 'required'
+            ],
             'active' => [
                 'field' => 'item_data.visibility',
                 'rules' => 'in:PUBLIC,PRIVATE',

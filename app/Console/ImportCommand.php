@@ -3,6 +3,7 @@
 namespace App\Console;
 
 use App\Models\Location;
+use App\Models\Menu;
 use App\Services\Parsers\JsonMenuFeedParser;
 use Database\Seeders\BrandsSeeder;
 use Illuminate\Console\Command;
@@ -11,6 +12,7 @@ use App\Services\Parsers\JsonLocationFeedParser;
 use App\Services\Parsers\FeedParser;
 use App\Services\Parsers\XmlLocationFeedParser;
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Support\Collection;
 use Illuminate\Support\Facades\Config;
 
 class ImportCommand extends Command
@@ -33,6 +35,7 @@ class ImportCommand extends Command
 
         foreach ($restaurantConfigurations as $restaurantConfigurationName => $restaurantConfiguration) {
             $this->info('Starting Restaurant "' . $restaurantConfigurationName . '" import...');
+            $location = null;
             foreach ($restaurantConfiguration as $phase => $filePath) {
                 $ucPhase = ucfirst($phase);
                 $this->info($ucPhase . ' - Importing from ' . $filePath);
@@ -46,13 +49,12 @@ class ImportCommand extends Command
 
                 $objects = $parser->parse($filePath);
 
-                $objects->each(
-                    fn (Model $obj) =>
-                        $obj->updateOrCreate(
-                            ['feed_id' => $obj->feed_id],
-                            $obj->getAttributes()
-                        )
-                );
+                switch($phase) {
+                    case 'locations':
+                        $location = Location::where('feed_id', $objects->first()->feed_id)->first();
+                        break;
+                    case 'menus': $this->saveMenuToLocation($objects->first(), $location); break;
+                }
             }
         }
     }
@@ -68,5 +70,11 @@ class ImportCommand extends Command
             ['menus', 'json'] => app(JsonMenuFeedParser::class),
             default => null
         };
+    }
+
+    protected function saveMenuToLocation(Menu $menu, Location $location): void
+    {
+        $location->menu()->associate($menu);
+        $location->save();
     }
 }

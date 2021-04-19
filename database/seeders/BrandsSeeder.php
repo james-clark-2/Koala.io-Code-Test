@@ -14,12 +14,9 @@ class BrandsSeeder extends Seeder
      */
     public function run()
     {
-        Brand::query()->firstOrCreate(
+        Brand::firstOrCreate(
             ['brand_code' => 'koala'],
-            [
-                'brand_code' => 'koala',
-                'pretty_name' => 'Koala'
-            ]
+            ['pretty_name' => 'Koala']
         );
     }
 }

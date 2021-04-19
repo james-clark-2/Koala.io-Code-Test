@@ -13,7 +13,8 @@ class Brand extends Model
     use HasFactory;
 
     protected $fillable = [
-        'name',
+        'pretty_name',
+        'brand_code'
     ];
 
     public function locations(): HasMany

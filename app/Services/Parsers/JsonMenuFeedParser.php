@@ -15,40 +15,21 @@ class JsonMenuFeedParser extends FeedParser
     public function parse(string $path): Collection
     {
         $data = $this->feedReader->loadAsObject($path);
+
         /** @var Menu $menu */
         $menu = app(Menu::class);
-        $menus = new Collection();
-        $menuItems = new Collection();
+        $menu->save();
 
-        foreach ($data->objects ?? [] as $dataObj) {
-            if ($dataObj->type == "CATEGORY") {
-                $category = $this->translateCategory($dataObj);
+        //Build out all categories first
+        $this->processCategoriesForMenu($menu, $data->objects ?? []);
 
-                if ($category) {
-                    $category->menu()->associate($category);
-                }
-            }
-        }
+        //Build out all menu items and attach them to categories
+        $this->processItemsForMenu($menu, $data->objects ?? []);
 
-//        foreach ($data->objects ?? []  as $dataObj) {
-//            if ($dataObj->type == "ITEM") {
-//                $menuItem = $this->translateMenuItem($dataObj);
-//
-//                if ($menuItem) {
-//                    $menuItems->add($menuItem);
-//                }
-//            }
-//        }
-
-        //Attach items to categories
-        //Attach categories to menu
-
-        $menus->add($menu);
-
-        return $menus;
+        return new Collection([$menu]);
     }
 
-    public function translateCategory(\stdClass $categoryData): ?Category
+    protected function translateCategory(\stdClass $categoryData): ?Category
     {
         return app()->make(
             ConfigurableCategoryDataTranslator::class,
@@ -58,7 +39,7 @@ class JsonMenuFeedParser extends FeedParser
         )->translate($categoryData);
     }
 
-    public function translateMenuItem(\stdClass $itemData): ?Item
+    protected function translateMenuItem(\stdClass $itemData): ?Item
     {
         return app()->make(
             ConfigurableItemDataTranslator::class,
@@ -66,5 +47,38 @@ class JsonMenuFeedParser extends FeedParser
                 'configuration' => Config::get('feeds.items.json')
             ]
         )->translate($itemData);
+    }
+
+    protected function processCategoriesForMenu(Menu $menu, array $dataObjects): void
+    {
+        foreach ($dataObjects ?? [] as $dataObj) {
+            if ($dataObj->type == "CATEGORY") {
+                $category = $this->translateCategory($dataObj);
+
+                if ($category) {
+                    $category = $category->firstOrNew(
+                        ['feed_id' => $category->feed_id],
+                        $category->getAttributes()
+                    );
+                    $category->menu()->associate($menu);
+                    $category->save();
+                }
+            }
+        }
+    }
+
+    protected function processItemsForMenu(Menu $menu, array $dataObjects): void
+    {
+        foreach ($dataObjects as $dataObj) {
+            if ($dataObj->type == "ITEM") {
+                $menuItem = $this->translateMenuItem($dataObj);
+
+                if ($menuItem) {
+                    $menu->categories()
+                        ->firstWhere('feed_id', $menuItem->category_feed_id)
+                        ?->items()->save($menuItem);
+                }
+            }
+        }
     }
 }

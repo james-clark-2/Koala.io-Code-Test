@@ -8,17 +8,10 @@ use App\Services\Parsers\JsonMenuFeedParser;
 use App\Services\Parsers\XmlLocationFeedParser;
 use Illuminate\Support\Facades\Config;
 use Mockery;
+use Tests\TestCase;
 
-class ImportCommandTest extends \Tests\TestCase
+class ImportCommandTest extends TestCase
 {
-    public function test_it_accepts_a_list_of_files()
-    {
-        $path = base_path('tests/Fixtures/koala-json-eatery-location.json');
-        $this->artisan('koala:import', ['files' => [$path]]);
-
-        $this->assertDatabaseHas('locations', ['feed_id' => 2]);
-    }
-
     public function test_it_uses_the_json_parser_for_json_files()
     {
         Config::set('feeds.restaurants.Test Restaurant', [
@@ -71,8 +64,11 @@ class ImportCommandTest extends \Tests\TestCase
         $expectedFeedId = 2; //Matches id in the fixture
         $oldLocation = Location::factory()->create(['feed_id' => $expectedFeedId]);
 
-        $path = base_path('tests/Fixtures/koala-json-eatery-location.json');
-        $this->artisan('koala:import', ['files' => [$path]]);
+        Config::set('feeds.restaurants.Test Restaurant', [
+            'locations' => base_path('tests/Fixtures/koala-json-eatery-location.json'),
+        ]);
+
+        $this->artisan('koala:import');
 
         $this->assertCount(1, Location::where('feed_id', $expectedFeedId)->get());
         $newLocation = Location::where('feed_id', $expectedFeedId)->first();

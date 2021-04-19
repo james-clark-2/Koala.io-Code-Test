@@ -2,6 +2,7 @@
 
 namespace App\Services\Parsers;
 
+use App\Models\Location;
 use Illuminate\Support\Collection;
 
 class JsonLocationFeedParser extends FeedParser
@@ -19,6 +20,17 @@ class JsonLocationFeedParser extends FeedParser
             }
         }
 
-        return $locations;
+        return $this->saveLocations($locations);
+    }
+
+    protected function saveLocations(Collection $locations): Collection
+    {
+        return $locations->each(
+            fn (Location $location) =>
+                $location->updateOrCreate(
+                    ['feed_id' => $location->feed_id],
+                    $location->getAttributes()
+                )
+        );
     }
 }

@@ -2,18 +2,23 @@
 
 namespace App\Models;
 
+use App\Models\Menu\Category;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
-use Illuminate\Database\Eloquent\Relations\BelongsTo;
 use Illuminate\Database\Eloquent\Relations\HasMany;
+use Illuminate\Database\Eloquent\Relations\HasOne;
 
 class Menu extends Model
 {
     use HasFactory;
 
-    public function location(): BelongsTo
+    protected $fillable = [
+        'location_id'
+    ];
+
+    public function location(): HasOne
     {
-        return $this->belongsTo(Location::class);
+        return $this->hasOne(Location::class);
     }
 
     public function categories(): HasMany
