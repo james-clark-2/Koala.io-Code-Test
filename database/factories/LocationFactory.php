@@ -4,6 +4,7 @@ namespace Database\Factories;
 
 use App\Models\Brand;
 use App\Models\Location;
+use App\Models\Menu;
 use Illuminate\Database\Eloquent\Factories\Factory;
 
 class LocationFactory extends Factory

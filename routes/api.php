@@ -15,6 +15,7 @@ use App\Http\Controllers\BrandController;
 |
 */
 
+Route::get('/brands', [BrandController::class, 'brands']);
 Route::get('/{brandCode}', [BrandController::class, 'brand']);
 Route::get('/{brandCode}/locations', [BrandController::class, 'locations']);
 Route::get('/{brandCode}/locations/{id}', [BrandController::class, 'location']);

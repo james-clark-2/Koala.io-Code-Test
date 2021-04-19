@@ -8,6 +8,21 @@ use Illuminate\Http\Response;
 
 class BrandController extends Controller
 {
+    const DEFAULT_PAGE_SIZE = 25;
+
+    public function brands(Request $request)
+    {
+        $request->validate([
+            'page' => 'int|gt:0',
+            'per_page' => 'int|gt:0'
+        ]);
+
+        return Brand::paginate(
+            perPage: $request->get('per_page', self::DEFAULT_PAGE_SIZE),
+            page: $request->get('page', 1)
+        );
+    }
+
     public function brand(string $brandCode)
     {
         return Brand::brandCode($brandCode)->firstOrFail();
@@ -24,7 +39,7 @@ class BrandController extends Controller
             ->firstOrFail()
             ->locations()
             ->paginate(
-                perPage: $request->get('per_page', 25),
+                perPage: $request->get('per_page', self::DEFAULT_PAGE_SIZE),
                 page: $request->get('page', 1)
             );
     }
