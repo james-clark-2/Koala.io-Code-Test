@@ -9,7 +9,7 @@ if [ ! -d /.composer ]; then
 fi
 
 if [ ! -f /var/www/.env ]; then
-    cp /var/www/.env.docker /var/www.env
+    cp /var/www/.env.docker /var/www/.env
 fi
 
 chmod -R ugo+rw /.composer
