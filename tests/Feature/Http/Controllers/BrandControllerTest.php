@@ -4,10 +4,19 @@ namespace Http\Controllers;
 
 use App\Models\Brand;
 use App\Models\Menu;
-use Database\Factories\MenuFactory;
+use Tests\TestCase;
 
-class BrandControllerTest extends \Tests\TestCase
+class BrandControllerTest extends TestCase
 {
+    public function test_it_returns_paginated_brands()
+    {
+        $brand = Brand::factory()->count(26)->create();
+        $this->get('/api/brands?per_page=25&page=2')
+            ->assertOk()
+            ->assertJsonPath('per_page', 25)
+            ->assertJsonPath('current_page', 2);
+    }
+
     public function test_it_returns_a_brand()
     {
         $brand = Brand::factory()->create();
@@ -19,16 +28,17 @@ class BrandControllerTest extends \Tests\TestCase
     public function test_it_throws_404_when_the_brand_does_not_exist()
     {
         $this->get('/api/not_a_real_brand')
-            ->assertNotFound();
+            ->assertNotFound()
+            ->assertJson(['errors' => 'Brand not found.']);
     }
 
     public function test_it_returns_paginated_locations()
     {
         $brand = Brand::factory()->hasLocations(26)->create();
-        $this->get('/api/'.$brand->brand_code.'/locations?per_page=25')
+        $this->get('/api/'.$brand->brand_code.'/locations?per_page=25&page=2')
             ->assertOk()
-            ->assertSimilarJson(['per_page' => 25])
-            ->assertJsonPath('current_page', 1);
+            ->assertJsonPath('per_page', 25)
+            ->assertJsonPath('current_page', 2);
     }
 
     public function test_it_returns_a_location()
@@ -43,7 +53,8 @@ class BrandControllerTest extends \Tests\TestCase
     {
         $brand = Brand::factory()->hasLocations()->create();
         $this->get('/api/'.$brand->brand_code.'/locations/not_a_location_id')
-            ->assertNotFound();
+            ->assertNotFound()
+            ->assertJson(['errors' => 'Location not found.']);
     }
 
     public function test_it_returns_a_menu_with_categories_and_items_for_a_location()
@@ -63,6 +74,7 @@ class BrandControllerTest extends \Tests\TestCase
     {
         $brand = Brand::factory()->hasLocations()->create();
         $this->get('/api/'.$brand->brand_code.'/locations/not_a_location_id/menu')
-            ->assertNotFound();
+            ->assertNotFound()
+            ->assertJson(['errors' => 'Location not found.']);
     }
 }

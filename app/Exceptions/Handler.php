@@ -50,13 +50,14 @@ class Handler extends ExceptionHandler
 
         $this->renderable(
             function (NotFoundHttpException $e) {
-                if ($e->getPrevious() instanceof ModelNotFoundException)
+                if ($e->getPrevious() instanceof ModelNotFoundException) {
                     $className = explode('\\', $e->getPrevious()->getModel());
-                    $message = ucfirst(end($className)).' not found.';
+                    $message = ucfirst(end($className)) . ' not found.';
 
                     return response()->json([
                         'errors' => $message
                     ], 404);
+                }
             }
         );
     }

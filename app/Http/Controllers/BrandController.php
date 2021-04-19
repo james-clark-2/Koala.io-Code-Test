@@ -18,8 +18,8 @@ class BrandController extends Controller
         ]);
 
         return Brand::paginate(
-            perPage: $request->get('per_page', self::DEFAULT_PAGE_SIZE),
-            page: $request->get('page', 1)
+            perPage: (int)$request->get('per_page', self::DEFAULT_PAGE_SIZE),
+            page: (int)$request->get('page', 1)
         );
     }
 
@@ -39,8 +39,8 @@ class BrandController extends Controller
             ->firstOrFail()
             ->locations()
             ->paginate(
-                perPage: $request->get('per_page', self::DEFAULT_PAGE_SIZE),
-                page: $request->get('page', 1)
+                perPage: (int)$request->get('per_page', self::DEFAULT_PAGE_SIZE),
+                page: (int)$request->get('page', 1)
             );
     }
 
