@@ -3,11 +3,11 @@
 ##Installation
 Clone, or extract the zip file into a directory.
 
-Open a terminal window and run `./bin/sail up --build -d`
+Open a terminal window and copy `.env.docker` to `.env` and run `./bin/sail up --build -d`
 This will build the Docker containers, set up the project including Composer dependencies, database migration, and seed restaurant data needed for the code test.
 
 The application can be accessed in a web browser/Postman/curl/http client of choice at:
-`http://127.0.0.1:80/koala`
+`http://localhost:80/koala`
 
 ##Usage
 * `GET /`

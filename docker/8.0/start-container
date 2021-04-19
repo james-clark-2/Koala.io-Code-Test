@@ -8,17 +8,15 @@ if [ ! -d /.composer ]; then
     mkdir /.composer
 fi
 
-if [ ! -f /var/www/.env ]; then
-    cp /var/www/.env.docker /var/www/.env
-fi
-
 chmod -R ugo+rw /.composer
 
 composer install
 
 chown -R $WWWUSER:$WWWGROUP /var/www
 
-/wait && php artisan migrate && php artisan koala:import
+/wait && php artisan migrate
+
+php artisan koala:import
 
 if [ $# -gt 0 ];then
     exec gosu $WWWUSER "$@"
