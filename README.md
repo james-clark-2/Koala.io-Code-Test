@@ -31,10 +31,12 @@ The hierarchy between those models are set up as a simple tree structure.
                 - Category
                     - Item
                     - Item
+                    ...
                 - Category
                     - Item
                     - Item
                     - Item
+                    ...
 
 Some assumptions have been made for the purpose of the code test.
 * There is only one brand - "Koala"
