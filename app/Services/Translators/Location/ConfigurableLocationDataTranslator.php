@@ -5,6 +5,7 @@ namespace App\Services\Translators\Location;
 use App\Models\Brand;
 use App\Models\Location;
 use App\Services\Contracts\DataTranslatorInterface;
+use Illuminate\Support\Arr;
 use Illuminate\Support\Facades\Validator;
 
 class ConfigurableLocationDataTranslator implements DataTranslatorInterface
@@ -21,9 +22,10 @@ class ConfigurableLocationDataTranslator implements DataTranslatorInterface
 
         $location = new Location();
 
+        $dataAsArray = json_decode(json_encode($data), true);
         foreach ($this->fieldMap() as $modelField => $fieldData)
         {
-            $location->$modelField = $data->{$fieldData['field'] ?? $modelField};
+            $location->$modelField = Arr::get($dataAsArray, $fieldData['field']) ?? $modelField;
         }
 
         $brandField = $this->brandIdentifier();

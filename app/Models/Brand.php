@@ -8,6 +8,12 @@ use Illuminate\Database\Eloquent\ModelNotFoundException;
 use Illuminate\Database\Eloquent\Relations\HasMany;
 use Illuminate\Database\Eloquent\Builder;
 
+/**
+ * Class Brand
+ * @package App\Models
+ *
+ * This model behaves as a common brand for all locations.
+ */
 class Brand extends Model
 {
     use HasFactory;

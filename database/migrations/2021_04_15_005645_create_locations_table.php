@@ -21,6 +21,11 @@ class CreateLocationsTable extends Migration
             $table->string('name');
             $table->text('description')->nullable();
             $table->string('phone_number');
+            $table->text('street')->nullable();
+            $table->string('city')->nullable();
+            $table->string('region')->nullable();
+            $table->string('postal_code')->nullable();
+            $table->string('country')->nullable();
             $table->foreignIdFor(Brand::class);
             $table->foreignIdFor(Menu::class)->nullable();
             $table->timestamps();

@@ -8,6 +8,12 @@ use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\HasMany;
 use Illuminate\Database\Eloquent\Relations\HasOne;
 
+/**
+ * Class Menu
+ * @package App\Models
+ *
+ * The Menu model acts as a container of one or more menu Categories, which can contain menu Items.
+ */
 class Menu extends Model
 {
     use HasFactory;

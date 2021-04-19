@@ -15,6 +15,8 @@ use Illuminate\Support\Collection;
  * @property ?Collection $menu
  * @property int brand_id,
  * @property int feed_id
+ *
+ * The Location class represents a single restaurant location - whether it is physical or an online-only presence.
  */
 class Location extends Model
 {
@@ -24,7 +26,12 @@ class Location extends Model
         'name',
         'phone_number',
         'brand_id',
-        'feed_id'
+        'feed_id',
+        'street',
+        'city',
+        'region',
+        'postal_code',
+        'country'
     ];
 
     public function brand(): BelongsTo
